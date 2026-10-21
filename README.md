@@ -15,15 +15,15 @@ Projeto didático de login com autenticação por sessão. As senhas são guarda
 
 | Arquivo | Descrição |
 |---|---|
-| [pom.xml](pom.xml) | Configuração do Maven e dependências do projeto |
-| [banco.sql](banco.sql) | Script que cria o banco `meu_db` e a tabela `usuarios` |
+| [pom.xml](demo3/pom.xml) | Configuração do Maven e dependências do projeto |
+| [banco.sql](demo3/banco.sql) | Script que cria o banco `meu_db` e a tabela `usuarios` |
 | [DemoApplication.java](demo3/src/main/java/com/example/demo/DemoApplication.java) | Classe principal que inicia o servidor Spring Boot |
-| [LoginController.java](src/main/java/com/example/demo/LoginController.java) | Endpoints `/login`, `/usuario` e `/logout` |
-| [UsuarioDAO.java](src/main/java/com/example/demo/UsuarioDAO.java) | Acesso ao banco: busca o hash da senha pelo email |
-| [SenhaUtil.java](src/main/java/com/example/demo/SenhaUtil.java) | Criptografia (BCrypt): gerar hash e conferir senha |
+| [LoginController.java](demo3/src/main/java/com/example/demo/LoginController.java) | Endpoints `/login`, `/usuario` e `/logout` |
+| [UsuarioDAO.java](demo3/src/main/java/com/example/demo/UsuarioDAO.java) | Acesso ao banco: busca o hash da senha pelo email |
+| [SenhaUtil.java](demo3/src/main/java/com/example/demo/SenhaUtil.java) | Criptografia (BCrypt): gerar hash e conferir senha |
 | [GerarHash.java](demo3/src/main/java/com/example/demo/GerarHash.java) | Utilitário temporário que gera o `INSERT` de um usuário com senha criptografada |
-| [criptografia.html](src/main/resources/static/criptografia.html) | Tela de login (`/criptografia.html`) |
-| [home.html](src/main/resources/static/home.html) | Tela principal, acessível só com login feito (`/home.html`) |
+| [criptografia.html](demo3/src/main/resources/static/criptografia.html) | Tela de login (`/criptografia.html`) |
+| [home.html](demo3/src/main/resources/static/home.html) | Tela principal, acessível só com login feito (`/home.html`) |
 | [launch.json](.vscode/launch.json) | Configurações de execução para o VS Code |
 
 > Os caminhos acima seguem o padrão do Maven/Spring Boot. Se seus arquivos estiverem em outra pasta, ajuste os links.
