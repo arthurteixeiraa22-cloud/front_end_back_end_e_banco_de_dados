@@ -24,7 +24,7 @@ Projeto didático de login com autenticação por sessão. As senhas são guarda
 | [GerarHash.java](demo3/src/main/java/com/example/demo/GerarHash.java) | Utilitário temporário que gera o `INSERT` de um usuário com senha criptografada |
 | [criptografia.html](demo3/src/main/resources/static/criptografia.html) | Tela de login (`/criptografia.html`) |
 | [home.html](demo3/src/main/resources/static/home.html) | Tela principal, acessível só com login feito (`/home.html`) |
-| [launch.json](.vscode/launch.json) | Configurações de execução para o VS Code |
+| [launch.json](launch.json) | Configurações de execução para o VS Code |
 
 > Os caminhos acima seguem o padrão do Maven/Spring Boot. Se seus arquivos estiverem em outra pasta, ajuste os links.
 
