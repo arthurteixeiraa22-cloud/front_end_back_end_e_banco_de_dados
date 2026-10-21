@@ -50,19 +50,19 @@ Projeto didático de login com autenticação por sessão. As senhas são guarda
 
 ### 1. Criar o banco de dados
 
-Execute o [banco.sql](banco.sql) no MySQL (Workbench, DBeaver ou terminal). Ele cria o banco `meu_db` e a tabela `usuarios`.
+Execute o [banco.sql](demo3/banco.sql) no MySQL (Workbench, DBeaver ou terminal). Ele cria o banco `meu_db` e a tabela `usuarios`.
 
 ### 2. Configurar a conexão
 
-No [UsuarioDAO.java](src/main/java/com/example/demo/UsuarioDAO.java), ajuste `USER` e `PASS` para o usuário e a senha do seu MySQL.
+No [UsuarioDAO.java](demo3/target/classes/com/example/demo/UsuarioDAO.class), ajuste `USER` e `PASS` para o usuário e a senha do seu MySQL.
 
 ### 3. Criar um usuário
 
-Edite o email e a senha em [GerarHash.java](src/main/java/com/example/demo/GerarHash.java) e execute a classe. Ela imprime um `INSERT` no console. Copie esse comando e execute no MySQL.
+Edite o email e a senha em [GerarHash.java](demo3/target/classes/com/example/demo/GerarHash.class) e execute a classe. Ela imprime um `INSERT` no console. Copie esse comando e execute no MySQL.
 
 ### 4. Iniciar o servidor
 
-Execute a classe [DemoApplication.java](src/main/java/com/example/demo/DemoApplication.java).
+Execute a classe [DemoApplication.java](demo3/src/main/java/com/example/demo/DemoApplication.java).
 
 ### 5. Acessar o sistema
 
