@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!-- TELA 2: ABRE QUANDO O LOGIN ESTÁ CERTO (endereço: /home.html) -->
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Página inicial</title>
+    <style>
+        /* Para mudar as cores do site, altere só estas variáveis */
+        :root {
+            --cor: #6366f1;
+            --cor-escura: #4f46e5;
+            --fundo: #f4f5ff;
+            --cartao: #ffffff;
+            --texto: #1e1b4b;
+            --texto-suave: #6b7280;
+            --borda: #e3e5f7;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --fundo: #11122b; --cartao: #1b1c3d; --texto: #f1f2ff;
+                --texto-suave: #9ca3c9; --borda: #33356b;
+            }
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0; min-height: 100vh; background: var(--fundo); color: var(--texto);
+            font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+        }
+        /* A página fica escondida até o Java confirmar que há login */
+        body.oculto { display: none; }
+
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 14px 32px; background: var(--cartao); border-bottom: 1px solid var(--borda);
+        }
+        .marca { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; }
+        .marca span {
+            width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center;
+            color: #fff; background: linear-gradient(135deg, var(--cor), #a855f7);
+        }
+        .usuario { display: flex; align-items: center; gap: 14px; }
+        .avatar {
+            width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center;
+            color: #fff; font-weight: 700; background: linear-gradient(135deg, var(--cor), #a855f7);
+        }
+        #emailTopo { font-size: 14px; color: var(--texto-suave); }
+        #btnSair {
+            padding: 9px 18px; font-size: 14px; font-weight: 600; cursor: pointer;
+            color: var(--cor-escura); background: transparent;
+            border: 1.5px solid var(--cor); border-radius: 10px; transition: all .2s;
+        }
+        #btnSair:hover { color: #fff; background: var(--cor); }
+
+        main { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+        .hero {
+            padding: 36px; border-radius: 20px; color: #fff;
+            background: linear-gradient(135deg, var(--cor), #a855f7);
+            box-shadow: 0 20px 40px rgba(99,102,241,.25);
+        }
+        .hero h1 { margin: 0 0 8px; font-size: 30px; }
+        .hero p { margin: 0; opacity: .92; font-size: 16px; }
+
+        .grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 28px; }
+        .cartao {
+            padding: 24px; background: var(--cartao); border: 1px solid var(--borda); border-radius: 16px;
+        }
+        .cartao h3 { margin: 0 0 6px; font-size: 16px; }
+        .cartao p { margin: 0; font-size: 14px; color: var(--texto-suave); line-height: 1.5; }
+        .selo {
+            display: inline-block; margin-bottom: 12px; padding: 4px 10px; font-size: 12px; font-weight: 600;
+            border-radius: 999px; color: var(--cor-escura); background: rgba(99,102,241,.14);
+        }
+        @media (max-width: 600px) { #emailTopo { display: none; } header { padding: 14px 16px; } }
+    </style>
+</head>
+<body class="oculto">
+    <header>
+        <div class="marca">
+            <span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/>
+                </svg>
+            </span>
+            Meu Sistema
+        </div>
+        <div class="usuario">
+            <span id="emailTopo"></span>
+            <div class="avatar" id="avatar"></div>
+            <button id="btnSair">Sair</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Login realizado com sucesso!</h1>
+            <p>Você está logado como <strong id="emailLogado"></strong>.</p>
+        </section>
+        
+        <!-- Coloque aqui o conteúdo da sua tela principal -->
+        <section class="grade">
+            <div class="cartao">
+                <span class="selo">Sessão</span>
+                <h3>Acesso autenticado</h3>
+                <p>O servidor reconhece você como usuário logado enquanto a sessão estiver ativa.</p>
+            </div>
+            <div class="cartao">
+                <span class="selo">Segurança</span>
+                <h3>Senha protegida</h3>
+                <p>Sua senha é guardada no banco como hash BCrypt, nunca em texto puro.</p>
+            </div>
+            <div class="cartao">
+                <span class="selo">Banco de dados</span>
+                <h3>Conectado ao MySQL</h3>
+                <p>O login foi conferido direto na tabela de usuários do banco.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Ao abrir a página, pergunta ao Java quem está logado
+        async function verificarLogin() {
+            const resposta = await fetch("/usuario");
+
+            if (!resposta.ok) {
+                // Ninguém logado: volta para a tela de login
+                window.location.href = "/criptografia.html";
+                return;
+            }
+
+            // Logado: mostra o email, a inicial no avatar e exibe a página
+            const email = await resposta.text();
+            document.getElementById("emailLogado").textContent = email;
+            document.getElementById("emailTopo").textContent = email;
+            document.getElementById("avatar").textContent = email.charAt(0).toUpperCase();
+            document.body.classList.remove("oculto");
+        }
+
+        // Botão Sair: apaga a sessão e volta para o login
+        document.getElementById("btnSair").addEventListener("click", async () => {
+            await fetch("/logout", { method: "POST" });
+            window.location.href = "/criptografia.html";
+
+        });
+
+        verificarLogin();
+    </script>
+</body>
+</html>
