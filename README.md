@@ -17,7 +17,7 @@ Projeto didático de login com autenticação por sessão. As senhas são guarda
 |---|---|
 | [pom.xml](pom.xml) | Configuração do Maven e dependências do projeto |
 | [banco.sql](banco.sql) | Script que cria o banco `meu_db` e a tabela `usuarios` |
-| [DemoApplication.java](src/main/java/com/example/demo/DemoApplication.java) | Classe principal que inicia o servidor Spring Boot |
+| [DemoApplication.java](demo3/src/main/java/com/example/demo/DemoApplication.java) | Classe principal que inicia o servidor Spring Boot |
 | [LoginController.java](src/main/java/com/example/demo/LoginController.java) | Endpoints `/login`, `/usuario` e `/logout` |
 | [UsuarioDAO.java](src/main/java/com/example/demo/UsuarioDAO.java) | Acesso ao banco: busca o hash da senha pelo email |
 | [SenhaUtil.java](src/main/java/com/example/demo/SenhaUtil.java) | Criptografia (BCrypt): gerar hash e conferir senha |
