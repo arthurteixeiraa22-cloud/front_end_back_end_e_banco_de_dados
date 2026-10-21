@@ -21,7 +21,7 @@ Projeto didático de login com autenticação por sessão. As senhas são guarda
 | [LoginController.java](src/main/java/com/example/demo/LoginController.java) | Endpoints `/login`, `/usuario` e `/logout` |
 | [UsuarioDAO.java](src/main/java/com/example/demo/UsuarioDAO.java) | Acesso ao banco: busca o hash da senha pelo email |
 | [SenhaUtil.java](src/main/java/com/example/demo/SenhaUtil.java) | Criptografia (BCrypt): gerar hash e conferir senha |
-| [GerarHash.java](src/main/java/com/example/demo/GerarHash.java) | Utilitário temporário que gera o `INSERT` de um usuário com senha criptografada |
+| [GerarHash.java](demo3/src/main/java/com/example/demo/GerarHash.java) | Utilitário temporário que gera o `INSERT` de um usuário com senha criptografada |
 | [criptografia.html](src/main/resources/static/criptografia.html) | Tela de login (`/criptografia.html`) |
 | [home.html](src/main/resources/static/home.html) | Tela principal, acessível só com login feito (`/home.html`) |
 | [launch.json](.vscode/launch.json) | Configurações de execução para o VS Code |
